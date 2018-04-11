@@ -1,0 +1,5 @@
+export const fetchingTypes = {
+  FETCHING_PLAYERS: "players/FETCHING_PLAYERS",
+  FETCHING_SUCCESS: "players/FETCHING_SUCCESS",
+  FETCHING_ERROR: "players/FETCHING_ERROR"
+};
