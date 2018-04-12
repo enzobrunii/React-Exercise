@@ -27,9 +27,9 @@ export default class PlayersGrid extends Component {
   noResultsMsg(){
     return (
       <div className="error">
-        <h3> No hay resultados para mostrar </h3>
+        <h3> There are no results to show. </h3>
           <button onClick={() => this.props.resetFilters()} className="botonReload">
-            Cargar todos
+            Clear Filters
           </button>
       </div>
     );

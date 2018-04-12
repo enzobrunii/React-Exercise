@@ -50,17 +50,15 @@ export const onResetFilters = () => {
 export const fetchingPlayers = () => {
     return (dispatch) => {
     dispatch(onFetchRequest());
-    return fetchPlayers().then(([response, json]) => {
+    return fetch(PLAYERS_URL, { method: 'GET'})
+    .then(response => Promise.all([response, response.json()]))
+    .then(([response, json]) => {
       if (json.length > 0) {
         dispatch(onFetchSuccess(json));
       } else {
         dispatch(onFetchError());
       }
-    });
+    })
+    .catch(err => dispatch(onFetchError()));
   }
-}
-
-const fetchPlayers = () => {
-  return fetch(PLAYERS_URL, { method: 'GET'})
-     .then( response => Promise.all([response, response.json()]));
 }

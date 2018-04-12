@@ -13,7 +13,17 @@ class App extends Component {
   }
 
   render() {
-    const { footballPlayers } = this.props;
+    const { data, footballPlayers } = this.props;
+    if (data.error) {
+      return (
+        <div className="error">
+          <h3> There was a problem trying to get the data. </h3>
+            <button onClick={() => this.props.fetchingPlayers()} className="botonReload">
+              Retry
+            </button>
+        </div>
+      );
+    }
     return (
       <div>
         <header>
@@ -53,6 +63,7 @@ App.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
+    data: state.search,
     footballPlayers: onSearch(state.search)
   }
 }
