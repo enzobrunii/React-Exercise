@@ -1,5 +1,5 @@
-import { fetchingTypes } from "./actionTypes";
-import { PLAYERS } from "./constants"
+import { fetchingTypes, filterTypes } from "./actionTypes";
+import { PLAYERS_URL } from "./constants"
 
 export const onFetchRequest = () => {
   return {
@@ -20,10 +20,37 @@ export const onFetchError = () => {
   };
 };
 
+export const onFilteredByKeywords = (keywords) => {
+  return {
+    type: filterTypes.SEARCH_KEYWORDS,
+    keywords
+  }
+}
+
+export const onFilteredByAge = (age) => {
+  return {
+    type: filterTypes.SEARCH_AGE,
+    age
+  }
+}
+
+export const onFilteredByPosition = (position) => {
+  return {
+    type: filterTypes.SEARCH_POSITION,
+    position
+  }
+}
+
+export const onResetFilters = () => {
+  return {
+    type: filterTypes.RESET_FILTERS
+  }
+}
+
 export const fetchingPlayers = () => {
     return (dispatch) => {
     dispatch(onFetchRequest());
-    return fetchPlayers().then(([response, json]) =>{
+    return fetchPlayers().then(([response, json]) => {
       if (json.length > 0) {
         dispatch(onFetchSuccess(json));
       } else {
@@ -34,6 +61,6 @@ export const fetchingPlayers = () => {
 }
 
 const fetchPlayers = () => {
-  return fetch(PLAYERS, { method: 'GET'})
+  return fetch(PLAYERS_URL, { method: 'GET'})
      .then( response => Promise.all([response, response.json()]));
 }
