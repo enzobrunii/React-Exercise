@@ -6,7 +6,7 @@ const { SearchBar, PlayersGrid } = search.components;
 const { fetchingPlayers, onFilteredByKeywords, onFilteredByAge, onFilteredByPosition, onResetFilters } = search.actions;
 const { onSearch } = search.selectors;
 
-class App extends Component {
+export class App extends Component {
 
   componentWillMount(){
     this.props.fetchingPlayers();
