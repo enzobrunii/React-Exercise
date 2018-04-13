@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { positionsTypes } from '../constants'
 import './styles.css';
 
@@ -41,8 +42,8 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="name" placeholder="Player Name" value={this.state.name} onChange={this.handleChange} />
+        <form id='searchForm' onSubmit={this.handleSubmit}>
+          <input id='name' type="text" name="name" placeholder="Player Name" value={this.state.name} onChange={this.handleChange} />
           <div className="select">
             <select name="position" value={this.state.position} onChange={this.handleChange}>
               <option value="default" disabled>Position</option>
@@ -61,3 +62,7 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onSearchChange: PropTypes.func.isRequired
+};

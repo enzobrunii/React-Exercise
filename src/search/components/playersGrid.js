@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 export default class PlayersGrid extends Component {
@@ -55,3 +56,8 @@ export default class PlayersGrid extends Component {
     );
   }
 }
+
+PlayersGrid.propTypes = {
+  data: PropTypes.array,
+  resetFilters: PropTypes.func.isRequired
+};
