@@ -14,7 +14,7 @@ table tr.head th {
   color: white;
 }
 
-table tr.par th {
+table tr:nth-child(even) th {
   background: #ddd;
 }
 

@@ -9,10 +9,8 @@ export default class PlayersGrid extends Component {
       <tbody>
       {
         results.map((data, index) => {
-          let style;
-          if (index%2 === 0) { style = 'par' }
           return (
-            <tr key={index} className={style}>
+            <tr key={index}>
               <th> {data.name} </th>
               <th> {data.position} </th>
               <th> {data.nationality} </th>
